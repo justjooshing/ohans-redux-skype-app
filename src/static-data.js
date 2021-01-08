@@ -3,8 +3,6 @@ import { sentence } from "txtgen";
 import faker from "faker";
 import _ from "lodash";
 
-import defaultProfilePicture from "./images/default_user_profile_picture.jpg";
-
 export const getMessages = (messagesPerUser) => {
   let messages = {};
   _.forEach(users, (user) => {
@@ -16,10 +14,13 @@ export const getMessages = (messagesPerUser) => {
 };
 
 export function generateUser() {
+  const randomNumber = Math.floor(Math.random() * 99);
+  const randomGender = Math.random() < 0.5 ? "men" : "women";
+  const profile_pic = `https://randomuser.me/api/portraits/med/${randomGender}/${randomNumber}.jpg`;
   return {
     name: faker.name.findName(),
     email: faker.internet.email(),
-    profile_pic: defaultProfilePicture,
+    profile_pic,
     status: sentence(),
     user_id: nanoid(15),
   };
