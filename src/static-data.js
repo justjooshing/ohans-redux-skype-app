@@ -44,7 +44,7 @@ const generateMsgs = (numberOfMsgs) => {
 
 const users = generateUsers(10);
 
-export const contacts = _.mapKeys(users, "user_id");
+export const contacts = _.keyBy(users, "user_id");
 
 export const state = {
   user: generateUser(),

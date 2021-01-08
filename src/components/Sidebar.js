@@ -1,5 +1,4 @@
-import React from "react";
-import User from "./User";
+import User from "../containers/User";
 import "./Sidebar.css";
 
 export default function Sidebar({ contacts }) {
