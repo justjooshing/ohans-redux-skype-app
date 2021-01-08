@@ -46,10 +46,10 @@ const users = generateUsers(10);
 
 export const contacts = _.keyBy(users, "user_id");
 
-export const state = {
-  user: generateUser(),
-  messages: getMessages(10),
-  typing: "",
-  contacts,
-  activeUserId: null,
-};
+// export const state = {
+//   user: generateUser(),
+//   messages: getMessages(10),
+//   typing: "",
+//   contacts,
+//   activeUserId: null,
+// };
