@@ -1,5 +1,5 @@
 import store from "../store";
-import { setTypingValue } from "../actions";
+import { setTypingValue, sendMessage } from "../actions";
 
 import "./MessageInput.css";
 
@@ -8,8 +8,15 @@ export default function MessageInput({ value }) {
     store.dispatch(setTypingValue(e.target.value));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const state = store.getState();
+    const { typing, activeUserId } = state;
+    store.dispatch(sendMessage(typing, activeUserId));
+  };
+
   return (
-    <form className="Message">
+    <form className="Message" onSubmit={handleSubmit}>
       <input
         className="Message__input"
         onChange={handleChange}
