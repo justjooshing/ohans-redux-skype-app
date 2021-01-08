@@ -10,9 +10,11 @@ export default function MessageInput({ value }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const state = store.getState();
-    const { typing, activeUserId } = state;
-    store.dispatch(sendMessage(typing, activeUserId));
+    if (value) {
+      const state = store.getState();
+      const { typing, activeUserId } = state;
+      store.dispatch(sendMessage(typing, activeUserId));
+    }
   };
 
   return (
