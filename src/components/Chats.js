@@ -16,7 +16,10 @@ export default function Chats({ messages }) {
   const Chat = ({ message }) => {
     const { text, is_user_msg } = message;
     return (
-      <span className={`Chat ${is_user_msg ? "is-user-msg" : ""}`}>{text}</span>
+      <span className={`Chat ${is_user_msg ? "is-user-msg" : ""}`}>
+        <span className="Chat__deleteBtn">X</span>
+        {text}
+      </span>
     );
   };
 

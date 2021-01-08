@@ -1,6 +1,7 @@
 .Message {
   width: 80%;
   margin: 1rem auto;
+  display: flex;
 }
 .Message__input {
   width: 100%;
