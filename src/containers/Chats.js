@@ -29,14 +29,24 @@ export default function Chats({ messages }) {
     const state = store.getState();
     const { activeUserId, messages } = state;
     store.dispatch(setActiveEditingMessage(activeUserId, number));
+
     const currentMessage = messages[activeUserId][number].text;
     store.dispatch(setTypingValue(currentMessage));
   };
 
+  // Need to remove clicked state if elsewhere is clicked... WIP
+  // const unsetSelectedMessage = () => {
+  //   const state = store.getState();
+  //   const { activeEditingMessage } = state;
+  //   if (activeEditingMessage.messageId) {
+  //     store.dispatch(setActiveEditingMessage(null, null));
+  //   }
+  // };
+
   const Chat = ({ message }) => {
     const { text, is_user_msg } = message;
     return (
-      <div className={`Chat ${is_user_msg ? "is-user-msg" : ""}`}>
+      <div className={`Chat ${is_user_msg ? "is-user-msg" : null}`}>
         <span onClick={is_user_msg ? () => clickEditMessage(message) : null}>
           {text}
         </span>
@@ -51,7 +61,11 @@ export default function Chats({ messages }) {
   };
 
   return (
-    <div className="Chats" ref={chatsRef}>
+    <div
+      className="Chats"
+      ref={chatsRef}
+      // onClick={unsetSelectedMessage}
+    >
       {messages.map((message) => (
         <Chat message={message} key={message.number} />
       ))}
