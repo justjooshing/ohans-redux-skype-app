@@ -1,5 +1,10 @@
 import store from "../store";
-import { setTypingValue, sendMessage } from "../actions";
+import {
+  setTypingValue,
+  sendMessage,
+  setActiveEditingMessage,
+  updateMessage,
+} from "../actions";
 
 import "./MessageInput.css";
 
@@ -10,10 +15,16 @@ export default function MessageInput({ value }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const state = store.getState();
+    const { typing, activeUserId, activeEditingMessage } = state;
+    const { messageId, userId } = activeEditingMessage;
     if (value) {
-      const state = store.getState();
-      const { typing, activeUserId } = state;
-      store.dispatch(sendMessage(typing, activeUserId));
+      if (activeEditingMessage.messageId) {
+        store.dispatch(updateMessage(typing, messageId, userId));
+        store.dispatch(setActiveEditingMessage(null, null));
+      } else {
+        store.dispatch(sendMessage(typing, activeUserId));
+      }
     }
   };
 

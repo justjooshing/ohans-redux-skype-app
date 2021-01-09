@@ -4,6 +4,7 @@ import contacts from "./contacts";
 import activeUserId from "./activeUserId";
 import messages from "./messages";
 import typing from "./typing";
+import activeEditingMessage from "./activeEditingMessage";
 
 export default combineReducers({
   user,
@@ -11,4 +12,5 @@ export default combineReducers({
   activeUserId,
   messages,
   typing,
+  activeEditingMessage,
 });

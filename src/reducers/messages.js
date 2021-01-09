@@ -1,7 +1,11 @@
 import _ from "lodash";
 
 import { getMessages } from "../static-data";
-import { DELETE_MESSAGE, SEND_MESSAGE } from "../constants/action-types";
+import {
+  DELETE_MESSAGE,
+  SEND_MESSAGE,
+  UPDATE_MESSAGE,
+} from "../constants/action-types";
 
 export default function messages(state = getMessages(10), action) {
   switch (action.type) {
@@ -31,6 +35,21 @@ export default function messages(state = getMessages(10), action) {
           ...msgsWithoutDeletedMessage,
         },
       };
+    case UPDATE_MESSAGE: {
+      const { text, messageId, userId } = action.payload;
+      const allUserMsgs = state[userId];
+      const currentMessage = allUserMsgs[messageId];
+      return {
+        ...state,
+        [userId]: {
+          ...allUserMsgs,
+          [messageId]: {
+            ...currentMessage,
+            text: text.concat(" [edited]"),
+          },
+        },
+      };
+    }
     default:
       return state;
   }
