@@ -6,5 +6,5 @@ Boilerplate code was written by Ohans Emmanuel which can be found [here] (https:
 
 - [x] Add delete message functionality
 - [x] Make own messages editable
-      [] Change styling on selected message
-      [] Add functionality to unselect message to edit
+- [ ] Change styling on selected message
+- [ ] Add functionality to unselect message to edit
