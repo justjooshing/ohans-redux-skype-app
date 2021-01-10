@@ -59,3 +59,7 @@
     max-width: 60%;
   }
 }
+
+.editing-message {
+  border: white solid 3px;
+}

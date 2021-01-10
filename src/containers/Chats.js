@@ -47,9 +47,20 @@ export default function Chats({ messages }) {
   // };
 
   const Chat = ({ message }) => {
-    const { text, is_user_msg } = message;
+    const { text, is_user_msg, number } = message;
+    const state = store.getState();
+    const selectedMessage = state.activeEditingMessage;
+    const { userId, messageId } = selectedMessage;
+
+    let className = "Chat";
+    className = is_user_msg ? className.concat(" is-user-msg") : className;
+    className =
+      state.activeUserId === userId && number === messageId
+        ? className.concat(" editing-message")
+        : className;
+
     return (
-      <div className={`Chat ${is_user_msg ? "is-user-msg" : null}`}>
+      <div className={className}>
         <span onClick={is_user_msg ? () => clickEditMessage(message) : null}>
           {text}
         </span>

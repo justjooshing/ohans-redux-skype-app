@@ -16,7 +16,7 @@ const render = () => {
 };
 
 const logState = () => {
-  console.log(store.getState());
+  // console.log(store.getState());
 };
 
 render();
