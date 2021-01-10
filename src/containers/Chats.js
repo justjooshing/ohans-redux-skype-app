@@ -28,13 +28,12 @@ export default function Chats({ messages }) {
   const clickEditMessage = ({ number }) => {
     const state = store.getState();
     const { activeUserId, messages } = state;
-    store.dispatch(setActiveEditingMessage(activeUserId, number));
-
     let currentMessage = messages[activeUserId][number].text;
     if (currentMessage.endsWith("[edited]")) {
       currentMessage = currentMessage.substring(0, currentMessage.length - 9);
     }
     store.dispatch(setTypingValue(currentMessage));
+    store.dispatch(setActiveEditingMessage(activeUserId, number));
   };
 
   // Need to remove clicked state if elsewhere is clicked... WIP

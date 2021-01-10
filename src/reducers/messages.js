@@ -39,13 +39,15 @@ export default function messages(state = getMessages(10), action) {
       const { text, messageId, userId } = action.payload;
       const allUserMsgs = state[userId];
       const currentMessage = allUserMsgs[messageId];
+      const replacementText =
+        currentMessage.text === text ? text : text.concat(" [edited]");
       return {
         ...state,
         [userId]: {
           ...allUserMsgs,
           [messageId]: {
             ...currentMessage,
-            text: text.concat(" [edited]"),
+            text: replacementText,
           },
         },
       };
