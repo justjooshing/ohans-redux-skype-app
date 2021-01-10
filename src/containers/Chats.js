@@ -30,7 +30,10 @@ export default function Chats({ messages }) {
     const { activeUserId, messages } = state;
     store.dispatch(setActiveEditingMessage(activeUserId, number));
 
-    const currentMessage = messages[activeUserId][number].text;
+    let currentMessage = messages[activeUserId][number].text;
+    if (currentMessage.endsWith("[edited]")) {
+      currentMessage = currentMessage.substring(0, currentMessage.length - 9);
+    }
     store.dispatch(setTypingValue(currentMessage));
   };
 
