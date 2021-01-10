@@ -19,11 +19,6 @@ export default function MessageInput({ value }) {
     const { typing, activeUserId, activeEditingMessage } = state;
     const { messageId, userId } = activeEditingMessage;
 
-    //we want
-    // [x] if value is empty, do nothing
-    // if value is the same, don't add "edited"
-    // if value is not the same, add "edited"
-
     if (value) {
       if (activeEditingMessage.messageId) {
         store.dispatch(updateMessage(typing, messageId, userId));
