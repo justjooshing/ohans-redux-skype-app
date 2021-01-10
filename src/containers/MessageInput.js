@@ -29,10 +29,16 @@ export default function MessageInput({ value }) {
     }
   };
 
+  const state = store.getState();
+  let className = "Message__input";
+  className = state.activeEditingMessage.messageId
+    ? className.concat(" editing-message")
+    : className;
+
   return (
     <form className="Message" onSubmit={handleSubmit}>
       <input
-        className="Message__input"
+        className={className}
         onChange={handleChange}
         value={value}
         placeholder="write a message"

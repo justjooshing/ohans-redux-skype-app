@@ -29,9 +29,9 @@ export default function Chats({ messages }) {
     const state = store.getState();
     const { activeUserId, messages } = state;
     let currentMessage = messages[activeUserId][number].text;
-    if (currentMessage.endsWith("[edited]")) {
-      currentMessage = currentMessage.substring(0, currentMessage.length - 9);
-    }
+    currentMessage = currentMessage.endsWith("[edited]")
+      ? currentMessage.substring(0, currentMessage.length - 9)
+      : currentMessage;
     store.dispatch(setTypingValue(currentMessage));
     store.dispatch(setActiveEditingMessage(activeUserId, number));
   };

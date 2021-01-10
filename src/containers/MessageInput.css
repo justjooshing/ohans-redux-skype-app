@@ -13,3 +13,7 @@
   font-size: 1rem;
   outline: 0;
 }
+
+.editing-message {
+  border: white solid 3px;
+}
