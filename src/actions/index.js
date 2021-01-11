@@ -33,11 +33,11 @@ export const deleteMessage = (messageId, userId) => ({
   },
 });
 
-export const setActiveEditingMessage = (userId, messageId) => ({
+export const setActiveEditingMessage = (messageId, userId) => ({
   type: SET_ACTIVE_EDITING_MESSAGE,
   payload: {
-    userId,
     messageId,
+    userId,
   },
 });
 
