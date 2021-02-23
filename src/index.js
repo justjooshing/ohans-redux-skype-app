@@ -6,17 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./store";
 
 const render = () => {
-  logState();
   return ReactDOM.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,
     document.getElementById("root")
   );
-};
-
-const logState = () => {
-  console.log(store.getState());
 };
 
 render();
